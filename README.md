@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="assets/icon.png" alt="Potions Icon">
+  <img src="assets/preview.gif" alt="Potions Preview GIF">
 </p>
 <h1 align="center">
   Potions
@@ -15,12 +15,6 @@
 </p>
 <p align="center">
  This is an independant and refactored implementation of a potions plugin I worked on in a previous server. This projct prioritises improved modular design and configuration.
-</p>
-
----
-
-<p align="center">
-  <img src="assets/preview.gif" alt="Potions Preview GIF">
 </p>
 
 ---
