@@ -20,3 +20,13 @@
 ---
 
 ## Implementation
+
+## Contributing
+Feel free to contribute to this project by submitting bug reports, feature requests, or pull requests on the [GitHub repository](https://github.com/hello-andrew-yan/paper-potions).
+
+## License
+This project is licensed under the [MIT License](LICENSE).
+
+---
+
+<p align="right"><a target="_blank" href="https://icons8.com/icon/auVXOEbHs0KH/potion">Potion</a> icon by <a target="_blank" href="https://icons8.com">Icons8</a></p>
