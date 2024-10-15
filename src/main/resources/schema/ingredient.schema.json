@@ -1,0 +1,51 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Ingredient",
+  "type": "object",
+  "properties": {
+    "name": {
+      "type": "string",
+      "description": "The name of the ingredient."
+    },
+    "description": {
+      "type": "string",
+      "description": "A description of the ingredient."
+    },
+    "hex": {
+      "type": "string",
+      "pattern": "^#[0-9A-Fa-f]{6}$",
+      "description": "The hexadecimal color code for the ingredient."
+    },
+    "material": {
+      "type": "string",
+      "description": "The material type of the ingredient."
+    },
+    "customModelData": {
+      "type": "integer",
+      "description": "Custom Model Data for the ingredient.",
+      "default": 0
+    },
+    "subingredient": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "method": {
+            "type": "string",
+            "enum": ["CUT", "CRUSH", "STEW"],
+            "description": "The method used to break down the ingredient."
+          },
+          "ingredient": {
+            "type": "string",
+            "description": "The name of the subingredient."
+          }
+        },
+        "required": ["method", "ingredient"],
+        "additionalProperties": false
+      },
+      "description": "An array of subingredients, each with a method and name."
+    }
+  },
+  "required": ["name", "description", "hex", "material"],
+  "additionalProperties": false
+}

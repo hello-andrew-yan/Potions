@@ -1,0 +1,4 @@
+name: Potions
+version: '${project.version}'
+main: io.github.helloandrewyan.potions.Potions
+api-version: '1.18'

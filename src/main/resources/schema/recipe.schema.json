@@ -1,0 +1,120 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Recipe",
+  "type": "object",
+  "properties": {
+    "name": {
+      "type": "string",
+      "description": "The name of the recipe."
+    },
+    "description": {
+      "type": "string",
+      "description": "A description of the recipe."
+    },
+    "hex": {
+      "type": "string",
+      "pattern": "^#[0-9A-Fa-f]{6}$",
+      "description": "The hexadecimal color code for the recipe."
+    },
+    "year": {
+      "type": "string",
+      "enum": ["YEAR_1", "YEAR_2,", "YEAR_3", "YEAR_4", "YEAR_5", "YEAR_6", "YEAR_7", "GRADUATE", "EVENT"],
+      "description": "The year requirement needed."
+    },
+    "steps": {
+      "type": "array",
+      "items": {
+        "anyOf": [
+          { "$ref": "#/definitions/ingredient_step" },
+          { "$ref": "#/definitions/heat_step" },
+          { "$ref": "#/definitions/stir_step" },
+          { "$ref": "#/definitions/wand_step" }
+        ]
+      },
+      "description": "A list of steps to be performed in the recipe."
+    }
+  },
+  "required": ["name", "description", "hex", "steps"],
+  "additionalProperties": false,
+  "definitions": {
+    "ingredient_step": {
+      "$schema": "https://json-schema.org/draft/2020-12/schema",
+      "title": "Ingredient Step",
+      "type": "object",
+      "properties": {
+        "type": {
+          "type": "string",
+          "enum": ["INGREDIENT_STEP"]
+        },
+        "ingredient": {
+          "type": "string",
+          "description": "The name of the ingredient."
+        },
+        "count": {
+          "type": "integer",
+          "description": "The number of units of the ingredient.",
+          "minimum": 1
+        }
+      },
+      "required": ["type", "ingredient", "count"],
+      "additionalProperties": false
+    },
+    "heat_step": {
+      "$schema": "https://json-schema.org/draft/2020-12/schema",
+      "title": "Heat Step",
+      "type": "object",
+      "properties": {
+        "type": {
+          "type": "string",
+          "enum": ["HEAT_STEP"]
+        },
+        "heat": {
+          "type": "string",
+          "enum": ["LOW", "MEDIUM", "HIGH"],
+          "description": "The heat level to apply."
+        }
+      },
+      "required": ["type", "heat"],
+      "additionalProperties": false
+    },
+    "stir_step": {
+      "$schema": "https://json-schema.org/draft/2020-12/schema",
+      "title": "Stir Step",
+      "type": "object",
+      "properties": {
+        "type": {
+          "type": "string",
+          "enum": ["STIR_STEP"]
+        },
+        "direction": {
+          "type": "string",
+          "enum": ["CLOCKWISE", "ANTICLOCKWISE"],
+          "description": "The direction to stir. Must be 'CLOCKWISE' or 'ANTICLOCKWISE'."
+        },
+        "rotations": {
+          "type": "integer",
+          "description": "The number of rotations to stir."
+        }
+      },
+      "required": ["type", "direction", "rotations"],
+      "additionalProperties": false
+    },
+    "wand_step": {
+      "$schema": "https://json-schema.org/draft/2020-12/schema",
+      "title": "Wand Step",
+      "type": "object",
+      "properties": {
+        "type": {
+          "type": "string",
+          "enum": ["WAND_STEP"]
+        },
+        "spell": {
+          "type": "string",
+          "description": "The name of the spell to be cast."
+        }
+      },
+      "required": ["type", "spell"],
+      "additionalProperties": false
+    }
+  }
+}
