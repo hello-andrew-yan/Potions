@@ -19,4 +19,10 @@
 
 ---
 
+<p align="center">
+  <img src="assets/preview.gif" alt="Potions Preview GIF">
+</p>
+
+---
+
 ## Implementation
