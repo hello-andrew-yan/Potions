@@ -26,11 +26,18 @@ This plugin utilises JSON schemas defined in the resources folder to ensure corr
 ### Ingredient
 The `Ingredient` class represents an ingredient that the Potions plugin can use during brewing. You can define an ingredient by implementing a `.json` file that corresponds with the defined `ingredient.schema.json`.
 
-At its core, ingredients have an assigned `name`, `description`, `hex` colour, Minecraft `material` to represent the ingredient in-game, `customModelData` and an optional `subingredient`.
+**Core Properties**
 
-The name of an existing ingredient can be linked as a subingredient to the parent ingredient via the three enums: `CUT`, `CRUSH` and `STEW`. If the specified ingredient name doesn't exist or an existing ingredient with the specified enum is defined already, this won't be added as a linked subingredient.
+- `name`: The ingredient's name
+- `description`: A brief description
+- `hex`: Color in hex format
+- `material`: Minecraft material representation
+- `customModelData`: Custom model data (optional)
+- `subingredient`: Optional subingredient linked via one of the three methods: `CUT`, `CRUSH`, or `STEW`.
 
-#### Example Ingredient
+> Note: Linking fails if the specified ingredient does not exist or if the enum is already defined.
+
+**Example Ingredient**
 ```json
 {
     "name": "Standard Ingredient",
@@ -48,8 +55,15 @@ The name of an existing ingredient can be linked as a subingredient to the paren
 ### Recipe
 The `Recipe` class represents a list of `Steps` that the Potions plugin follows to create a `Potion`. You can define an recipe by implementing a `.json` file that corresponds with the defined `recipe.schema.json`.
 
-At its core, recipes have an assigned `name`, `description`, `hex` colour and a combination of `steps`. There are currently four step types to choose from: `INGREDIENT_STEP`, `HEAT_STEP`, `STIR_STEP` and `WAND_STEP`.
+**Core Properties**
 
+- `name`: The recipe's name
+- `description`: A brief description
+- `hex`: Color in hex format
+- `steps`: An array of any combination of steps to follow (four types available).
+
+### Step Types
+ 
 #### Ingredient Step
 Requires the name of the `ingredient` and quantity `count` needed to proceed. In-game, ingredients a thrown into the cauldron automatically when the player's crosshair is selecting the cauldron block. You can either throw the items individually or in stacks.
 ```json
@@ -76,10 +90,6 @@ Requires the stir `direction` from `CLOCKWISE` and `ANTICLOCKWISE` as well as th
   "rotations": 2
 }
 ```
-
-#### Wand Step
-**TODO** - Since this needs implementation alongside the Magic plugin.
-
 
 #### Example Recipe
 ```json
